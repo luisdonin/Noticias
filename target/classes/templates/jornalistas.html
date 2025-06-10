@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jornalistas</title>
+</head>
+<body>
+<table border="1">
+    <div id="nav-bar-box">
+        <div id="nav-bar">
+            <ul class="nav-bar-list">
+
+                <li class="nav-bar-list-item" >
+                    <a href="/" > Página Inicial </a></li>
+
+                <li class="nav-bar-list-item" >
+                    <a href="reportagens" > Reportagens </a></li>
+
+                <li class="nav-bar-list-item" >
+                    <a href="jornalistas" > Jornalistas </a></li>
+
+                <li class="nav-bar-list-item" >
+                    <a href="assuntos" > Assuntos </a></li>
+
+                <li class="nav-bar-list-item" >
+                    <a href="jornalista"> Dashboard </a></li>
+
+            </ul>
+        </div>
+    </div>
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="jornalista : ${jornalistas}">
+        <td th:text="${jornalista.nome}"></td>
+        <td th:text="${jornalista.email}"></td>
+        <td>
+            <a th:href="@{'/jornalista?idJornalista=' + ${jornalista.id}}">Editar</a> |
+            <a th:href="@{'/removerJornalista?idJornalista=' + ${jornalista.id}}">Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

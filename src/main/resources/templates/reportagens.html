@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reportagens</title>
+</head>
+<body>
+<div id="nav-bar-box">
+    <div id="nav-bar">
+        <ul class="nav-bar-list">
+            <li class="nav-bar-list-item"><a href="/"> Página Inicial </a></li>
+            <li class="nav-bar-list-item"><a href="reportagens"> Reportagens </a></li>
+            <li class="nav-bar-list-item"><a href="jornalistas"> Jornalistas </a></li>
+            <li class="nav-bar-list-item"><a href="assuntos"> Assuntos </a></li>
+            <li class="nav-bar-list-item"><a href="jornalista"> Dashboard </a></li>
+        </ul>
+    </div>
+</div>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Conteúdo</th>
+        <th>Jornalista</th>
+        <th>Assunto</th>
+        <th>Data de Criação</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reportagem : ${reportagens}">
+        <td th:text="${reportagem.id}"></td>
+        <td th:text="${reportagem.reportTitulo}"></td>
+        <td th:text="${reportagem.reportConteudo}"></td>
+        <td th:text="${reportagem.autor != null ? reportagem.autor.nome : 'N/A'}"></td>
+        <td th:text="${reportagem.assunto != null ? reportagem.assunto.assuntoTitulo : 'N/A'}"></td>
+        <td th:text="${reportagem.dataCriacao != null ? #temporals.format(reportagem.dataCriacao, 'dd/MM/yyyy HH:mm') : 'N/A'}"></td>
+        <td>
+            <a th:href="@{'/reportagem?idReportagem=' + ${reportagem.id}}">Editar</a> |
+            <a th:href="@{'/removerReportagem?idReportagem=' + ${reportagem.id}}">Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
