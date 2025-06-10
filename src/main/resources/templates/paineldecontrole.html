@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles/form.css}" rel="stylesheet" />
+    <link th:href="@{/styles/lists.css}" rel="stylesheet" />
+    <link rel="icon" type="image/png" th:href="@{/styles/images/logo.png}">
+    <link th:href="@{/styles/background.css}" rel="stylesheet" />
+    <title>Painel de Controle</title>
+</head>
+<body>
+<!--<div id="logo-box">
+    <div id="logo">
+        <h1>Logo</h1>
+    </div>
+</div>-->
+
+
+<div id="nav-bar-box">
+    <div id="nav-bar">
+        <ul class="nav-bar-list">
+            <li class="nav-bar-list-item nav-bar-logo" style="background-color: white">
+                <a href="/"><img th:src="@{styles/images/logo.png}" alt="5pn Logo" id="logo-image"> </a>
+            </li>
+
+            <li class="nav-bar-list-item" >
+                <a href="/" > Página Inicial </a></li>
+
+          <li class="nav-bar-list-item" >
+                <a href="jornalistas" > Editar/ Remover Jornalistas </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="assuntos" > Editar/ Remover Assuntos </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="reportagens" > Editar/ Remover Reportagens </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="reportagem"> Nova Reportagem </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="assunto"> Novo Assunto </a></li>
+        </ul>
+    </div>
+</div>
+
+<form method="POST" action="paineldecontrole" th:object="${jornalista}">
+    <input type="hidden" th:field="*{id}" />
+    <label>Nome:</label><br>
+    <input type="text" th:field="*{nome}" /><br>
+    <label>E-mail:</label><br>
+    <input type="email" th:field="*{email}" /><br>
+    <input type="submit" value="Salvar" />
+</form>
+
+
+
+</body>
+</html>

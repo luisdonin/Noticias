@@ -18,11 +18,10 @@
             </li>
 
             <li class="nav-bar-list-item"><a href="/"> Página Inicial </a></li>
-            <!--<li class="nav-bar-list-item"><a href="reportagens"> Reportagens </a></li> -->
-            <li class="nav-bar-list-item"><a href="jornalistas"> Editar/ Remover Jornalistas </a></li>
-            <li class="nav-bar-list-item"><a href="assuntos"> Editar/ Remover Assuntos </a></li>
-            <li class="nav-bar-list-item"><a href="paineldecontrole"> Cadastrar Jornalista </a></li>
-            <li class="nav-bar-list-item" ><a href="reportagem"> Nova Reportagem </a></li>
+            <!--<li class="nav-bar-list-item"><a href="reportagens"> Reportagens </a></li>
+            <li class="nav-bar-list-item"><a href="jornalistas"> Jornalistas </a></li>
+            <li class="nav-bar-list-item"><a href="assuntos"> Assuntos </a></li>
+            <li class="nav-bar-list-item"><a href="jornalista"> Dashboard </a></li> -->
         </ul>
     </div>
 </div>
@@ -36,10 +35,7 @@
                 <span th:text="${reportagem.assunto != null ? reportagem.assunto.assuntoTitulo : 'N/A'}"></span> &middot;
                 <span th:text="${reportagem.dataCriacao != null ? #temporals.format(reportagem.dataCriacao, 'dd/MM/yyyy HH:mm') : 'N/A'}"></span>
             </div>
-            <div class="news-actions">
-                <a th:href="@{'/reportagem?idReportagem=' + ${reportagem.id}}" class="btn-edit">Editar</a>
-                <a th:href="@{'/removerReportagem?idReportagem=' + ${reportagem.id}}" class="btn-delete">Excluir</a>
-            </div>
+
         </div>
     </div>
 

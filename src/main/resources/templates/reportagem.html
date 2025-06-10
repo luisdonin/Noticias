@@ -2,34 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link th:href="@{/styles/form.css}" rel="stylesheet" />
+    <link th:href="@{/styles/lists.css}" rel="stylesheet" />
+    <link th:href="@{/styles/background.css}" rel="stylesheet" />
+    <link rel="icon" type="image/png" th:href="@{/styles/images/logo.png}">
+    <title>Nova Reportagem</title>
 </head>
 <body>
-<div id="logo-box">
+<!--<div id="logo-box">
     <div id="logo">
         <h1>Logo</h1>
     </div>
-</div>
+</div>-->
+
 
 <div id="nav-bar-box">
     <div id="nav-bar">
         <ul class="nav-bar-list">
+            <li class="nav-bar-list-item nav-bar-logo" style="background-color: white">
+                <a href="/"><img th:src="@{styles/images/logo.png}" alt="5pn Logo" id="logo-image"> </a>
+            </li>
+
 
             <li class="nav-bar-list-item" >
                 <a href="/" > Página Inicial </a></li>
 
+           <!-- <li class="nav-bar-list-item" >
+                <a href="reportagens" > Reportagens </a></li> -->
             <li class="nav-bar-list-item" >
-                <a href="reportagens" > Reportagens </a></li>
+                <a href="reportagens" > Editar/ Remover Reportagens </a></li>
 
             <li class="nav-bar-list-item" >
-                <a href="jornalistas" > Jornalistas </a></li>
+                <a href="jornalistas" > Editar/ Remover Jornalistas </a></li>
 
             <li class="nav-bar-list-item" >
-                <a href="assuntos" > Assuntos </a></li>
+                <a href="assuntos" > Editar/ Remover  Assuntos </a></li>
+
+            <!--<li class="nav-bar-list-item" >
+                <a href="reportagem"> Nova Reportagem </a></li> -->
 
             <li class="nav-bar-list-item" >
-                <a href="jornalista"> Dashboard </a></li>
-
+                <a href="assunto"> Novo Assunto </a></li>
+            <li class="nav-bar-list-item" >
+                <a href="paineldecontrole"> Cadastrar Jornalista </a></li>
         </ul>
     </div>
 </div>
@@ -41,7 +56,7 @@
     <input type="text" th:field="*{reportTitulo}" /><br>
 
     <label>Conteúdo da Reportagem: </label> <br>
-    <textarea th:field="*{reportConteudo}" rows="10" style="width: 500px"></textarea><br>
+    <textarea th:field="*{reportConteudo}" rows="10" style="width: 330px"></textarea><br>
 
     <label>Jornalista:</label><br>
 
