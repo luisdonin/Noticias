@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="logo-box">
+    <div id="logo">
+        <h1>Logo</h1>
+    </div>
+</div>
+
+<div id="nav-bar-box">
+    <div id="nav-bar">
+        <ul class="nav-bar-list">
+
+            <li class="nav-bar-list-item" >
+                <a href="/" > Página Inicial </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="reportagens" > Reportagens </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="jornalistas" > Jornalistas </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="assuntos" > Assuntos </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="reportagem"> Nova Reportagem </a></li>
+
+
+            <li class="nav-bar-list-item" >
+                <a href="assunto"> Novo Assunto </a></li>
+
+
+
+        </ul>
+    </div>
+</div>
+
+<form method="POST" action="jornalista" th:object="${jornalista}">
+    <input type="hidden" th:field="*{id}" />
+    <label>Nome:</label><br>
+    <input type="text" th:field="*{nome}" /><br>
+    <label>E-mail:</label><br>
+    <input type="email" th:field="*{email}" /><br>
+    <input type="submit" value="Salvar" />
+</form>
+
+
+
+</body>
+</html>

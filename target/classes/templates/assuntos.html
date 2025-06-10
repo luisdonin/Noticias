@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assuntos</title>
+</head>
+<body>
+
+<div id="nav-bar-box">
+    <div id="nav-bar">
+        <ul class="nav-bar-list">
+
+            <li class="nav-bar-list-item" >
+                <a href="/" > Página Inicial </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="reportagens" > Reportagens </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="jornalistas" > Jornalistas </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="assuntos" > Assuntos </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="jornalista"> Dashboard </a></li>
+
+        </ul>
+    </div>
+</div>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="assunto : ${assuntos}">
+        <td th:text="${assunto.id}"></td>
+        <td th:text="${assunto.assuntoTitulo}"></td>
+        <td>
+            <a th:href="@{'/assunto?idAssunto=' + ${assunto.id}}">Editar</a> |
+            <a th:href="@{'/removerAssunto?idAssunto=' + ${assunto.id}}">Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

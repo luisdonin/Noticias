@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="logo-box">
+    <div id="logo">
+        <h1>Logo</h1>
+    </div>
+</div>
+
+<div id="nav-bar-box">
+    <div id="nav-bar">
+        <ul class="nav-bar-list">
+
+            <li class="nav-bar-list-item" >
+                <a href="/" > Página Inicial </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="reportagens" > Reportagens </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="jornalistas" > Jornalistas </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="assuntos" > Assuntos </a></li>
+
+            <li class="nav-bar-list-item" >
+                <a href="jornalista"> Dashboard </a></li>
+
+        </ul>
+    </div>
+</div>
+
+
+<form method="POST" action="reportagem" th:object="${reportagem}">
+    <input type="hidden" th:field="*{id}" />
+    <label>Titulo da Reportagem</label> <br>
+    <input type="text" th:field="*{reportTitulo}" /><br>
+
+    <label>Conteúdo da Reportagem: </label> <br>
+    <textarea th:field="*{reportConteudo}" rows="10" style="width: 500px"></textarea><br>
+
+    <label>Jornalista:</label><br>
+
+    <select th:field="*{autor.id}">
+        <option th:each="j : ${jornalistas}" th:value="${j.id}" th:text="${j.nome}"></option>
+    </select>
+    <select th:field="*{assunto.id}">
+        <option th:each="a : ${assuntos}" th:value="${a.id}" th:text="${a.assuntoTitulo}"></option>
+    </select>
+
+    <input type="submit" value="Salvar" />
+</form>
+
+
+
+</body>
+</html>
