@@ -17,7 +17,7 @@ public class controleJornalista {
     @Autowired
     private JornalistaServico jornalistaServico;
 
-    @GetMapping("/jornalista")
+    @GetMapping("/paineldecontrole")
     public String exibirPaginaCadastrarJornalista(@RequestParam(required = false) String idJornalista, Model model) {
         Jornalista jornalista = null;
         if (idJornalista != null) {
@@ -31,7 +31,7 @@ public class controleJornalista {
             jornalista = new Jornalista(null, "");
         }
         model.addAttribute("jornalista", jornalista);
-        return "jornalista";
+        return "paineldecontrole";
     }
 
     @PostMapping(value = "/jornalista")
@@ -55,4 +55,6 @@ public class controleJornalista {
         jornalistaServico.remover(idJornalista);
         return "redirect:/jornalista";
     }
+
+
 }
