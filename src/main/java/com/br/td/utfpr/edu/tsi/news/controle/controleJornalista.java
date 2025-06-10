@@ -17,7 +17,7 @@ public class controleJornalista {
     @Autowired
     private JornalistaServico jornalistaServico;
 
-    @GetMapping("/jornalista")
+    @GetMapping("/paineldecontrole")
     public String exibirPaginaCadastrarJornalista(@RequestParam(required = false) String idJornalista, Model model) {
         Jornalista jornalista = null;
         if (idJornalista != null) {
@@ -31,16 +31,16 @@ public class controleJornalista {
             jornalista = new Jornalista(null, "");
         }
         model.addAttribute("jornalista", jornalista);
-        return "jornalista";
+        return "paineldecontrole";
     }
 
-    @PostMapping(value = "/jornalista")
+    @PostMapping(value = "/paineldecontrole")
     public String cadastrarJornalista(Jornalista jornalista) {
         if (jornalista.getId() == null || jornalista.getId().isEmpty()) {
             jornalista.setId(null);
         }
         jornalistaServico.cadastrar(jornalista);
-        return "redirect:/";
+        return "redirect:/jornalistas";
     }
 
     @GetMapping(value = "/jornalistas")
@@ -53,6 +53,8 @@ public class controleJornalista {
     @GetMapping(value = "/removerJornalista")
     public String removerJornalista(@RequestParam String idJornalista) {
         jornalistaServico.remover(idJornalista);
-        return "redirect:/jornalista";
+        return "redirect:/paineldecontrole";
     }
+
+
 }

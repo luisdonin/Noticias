@@ -77,7 +77,7 @@ public class controleReportagem {
             reportagem.setDataCriacao(java.time.LocalDateTime.now());
         }
         reportagemServico.cadastrar(reportagem);
-        return "redirect:/";
+        return "redirect:/reportagem";
     }
     @GetMapping(value = "/reportagens")
     public String exibirPaginaListarReportagem(Model model) {
@@ -89,7 +89,13 @@ public class controleReportagem {
     @GetMapping(value = "/removerReportagem")
     public String removerDocumentos(@RequestParam String idReportagem) {
         reportagemServico.remover(idReportagem);
-        return "index";
+        return "redirect:/reportagensPublic";
+    }
+    @GetMapping("/reportagensPublic")
+    public String exibirPaginaListarReportagemPublic(Model model) {
+        List<Reportagem> reportagem = reportagemServico.listarTodos();
+        model.addAttribute("reportagens", reportagem);
+        return "reportagensPublic";
     }
 
 }

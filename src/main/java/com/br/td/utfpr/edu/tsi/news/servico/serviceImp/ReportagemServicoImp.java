@@ -14,6 +14,7 @@ public class ReportagemServicoImp implements ReportagemServico {
 
     @Override
     public void cadastrar(Reportagem reportagem) {
+
         reportagemRepository.save(reportagem);
     }
 

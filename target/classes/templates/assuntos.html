@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/styles/form.css}" rel="stylesheet" />
+    <link th:href="@{/styles/lists.css}" rel="stylesheet" />
+    <link th:href="@{/styles/table.css}" rel="stylesheet" />
+    <link th:href="@{/styles/background.css}" rel="stylesheet" />
+    <link rel="icon" type="image/png" th:href="@{/styles/images/logo.png}">
     <title>Assuntos</title>
 </head>
 <body>
@@ -9,22 +14,14 @@
 <div id="nav-bar-box">
     <div id="nav-bar">
         <ul class="nav-bar-list">
+            <li class="nav-bar-list-item nav-bar-logo" style="background-color: white">
+                <a href="/"><img th:src="@{styles/images/logo.png}" alt="5pn Logo" id="logo-image"> </a>
+            </li>
 
-            <li class="nav-bar-list-item" >
-                <a href="/" > Página Inicial </a></li>
-
-            <li class="nav-bar-list-item" >
-                <a href="reportagens" > Reportagens </a></li>
-
-            <li class="nav-bar-list-item" >
-                <a href="jornalistas" > Jornalistas </a></li>
-
-            <li class="nav-bar-list-item" >
-                <a href="assuntos" > Assuntos </a></li>
-
-            <li class="nav-bar-list-item" >
-                <a href="jornalista"> Dashboard </a></li>
-
+            <li class="nav-bar-list-item"><a href="/"> Página Inicial </a></li>
+            <!--<li class="nav-bar-list-item"><a href="reportagens"> Reportagens </a></li> -->
+            <li class="nav-bar-list-item"><a href="jornalistas"> Editar/ Remover Jornalistas </a></li>
+            <li class="nav-bar-list-item" ><a href="paineldecontrole"> Cadastrar Jornalista </a></li>
         </ul>
     </div>
 </div>
@@ -33,6 +30,7 @@
     <tr>
         <th>ID</th>
         <th>Título</th>
+        <th>Ações</th>
 
     </tr>
     </thead>
