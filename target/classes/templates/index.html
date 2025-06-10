@@ -2,7 +2,12 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link th:href="@{/styles/form.css}" rel="stylesheet" />
+    <link th:href="@{/styles/lists.css}" rel="stylesheet" />
+    <link th:href="@{/styles/background.css}" rel="stylesheet" />
+
+    <link rel="icon" type="image/png" th:href="@{/styles/images/logo.png}">
+    <title>  Página Inicial </title>
 </head>
 
 <!--June, 9th, 2025-->
@@ -10,34 +15,75 @@
 <!--Now, all pages are correctly set up, so I'll copy the nav bar code onto them.-->
 <!--There's probably a better way of doing this part, but I'm gonna do it this way to save time-->
 <body>
-    <div id="logo-box">
-        <div id="logo">
-            <h1>Logo</h1>
-        </div>
+<!--<div id="logo-box">
+    <div id="logo">
+        <h1>Logo</h1>
     </div>
+</div>-->
+
 
     <div id="nav-bar-box">
         <div id="nav-bar">
             <ul class="nav-bar-list">
 
+                <li class="nav-bar-list-item nav-bar-logo" style="background-color: white">
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUJcmljayByb2xs"><img th:src="@{styles/images/logo.png}" alt="5pn Logo" id="logo-image"> </a>
+                </li>
+
                 <li class="nav-bar-list-item" >
                     <a href="/" > Página Inicial </a></li>
 
                 <li class="nav-bar-list-item" >
-                   <a href="reportagens" > Reportagens </a></li>
+                   <a href="reportagensPublic" > Reportagens Públicas </a></li>
 
-                <li class="nav-bar-list-item" >
+               <!-- <li class="nav-bar-list-item" >
                    <a href="jornalistas" > Jornalistas </a></li>
 
                 <li class="nav-bar-list-item" >
-                    <a href="assuntos" > Assuntos </a></li>
+                    <a href="assuntos" > Assuntos </a></li> -->
 
                 <li class="nav-bar-list-item" >
-                    <a href="jornalista"> Painel Jornalistas </a></li>
+                    <a href="paineldecontrole"> Painel de Controle </a></li>
 
             </ul>
         </div>
     </div>
+
+<div class="hero-container">
+    <div class="hero-card">
+        <img th:src="@{/styles/images/logo.svg}" alt="5NP Logo" class="hero-logo">
+        <p class="hero-text">
+            Cinco News Press is an independent global news organization dedicated to factual reporting. Founded in 1846, 5NP today remains the most trusted source of fast, accurate, unbiased news in all formats and the essential provider of the technology and services vital to the news business. More than half the world’s population sees 5NP journalism every day.
+        </p>
+    </div>
+</div>
+
+<style>
+    .hero-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 60vh;
+    }
+    .hero-card {
+        background: #f5f5c6;
+        border-radius: 16px;
+        border: 3px solid #000080;
+        box-shadow: 4px 4px 0 #ff00cc;
+        padding: 2rem 2.5rem;
+        text-align: center;
+        max-width: 600px;
+    }
+    .hero-logo {
+        width: 120px;
+        margin-bottom: 1.5rem;
+    }
+    .hero-text {
+        font-size: 1.1rem;
+        text-align: justify;
+        color: #333;
+    }
+</style>
 
 </body>
 </html>

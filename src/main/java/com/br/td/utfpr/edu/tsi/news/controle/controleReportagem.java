@@ -89,7 +89,13 @@ public class controleReportagem {
     @GetMapping(value = "/removerReportagem")
     public String removerDocumentos(@RequestParam String idReportagem) {
         reportagemServico.remover(idReportagem);
-        return "index";
+        return "reportagens";
+    }
+    @GetMapping("/reportagensPublic")
+    public String exibirPaginaListarReportagemPublic(Model model) {
+        List<Reportagem> reportagem = reportagemServico.listarTodos();
+        model.addAttribute("reportagens", reportagem);
+        return "reportagensPublic";
     }
 
 }
