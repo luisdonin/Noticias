@@ -6,8 +6,8 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-/*@PropertySource({ "file:./application.properties" })
-@ImportResource({ "file:./applicationContext.xml" })*/
+/*@PropertySource({ "/application.properties" })
+@ImportResource({ "applicationContext.xml" })*/
 public class Main {
 
     public static void main(String[] args) {

@@ -28,4 +28,7 @@ public class JornalistaServicoImp implements JornalistaServico {
         jornalistaRepository.deleteById(idJornalista);
     }
 
+
+
+
 }

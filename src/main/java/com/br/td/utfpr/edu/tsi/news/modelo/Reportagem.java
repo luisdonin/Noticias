@@ -15,18 +15,27 @@ public class Reportagem {
     private Assunto assunto;
     LocalDateTime dataCriacao;
 
+    private ReportagemSituacao situacao;
 
     public Reportagem() {
     }
-    public Reportagem(String reportTitulo, String reportConteudo, Jornalista autor, Assunto assunto) {
+    public Reportagem(String reportTitulo, String reportConteudo, Jornalista autor, Assunto assunto, ReportagemSituacao situacao) {
         this.reportTitulo = reportTitulo;
         this.reportConteudo = reportConteudo;
         this.autor = autor;
         this.assunto = assunto;
         this.dataCriacao = LocalDateTime.now();
+        this.situacao = situacao;
 
     }
 
+    public ReportagemSituacao getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(ReportagemSituacao situacao) {
+        this.situacao = situacao;
+    }
 
     public String getId() {
         return id;
@@ -84,6 +93,7 @@ public class Reportagem {
                 ", autor=" + autor +
                 ", assunto=" + assunto +
                 ", dataCriacao=" + dataCriacao +
+                ", situacao=" + situacao +
                 '}';
     }
 }

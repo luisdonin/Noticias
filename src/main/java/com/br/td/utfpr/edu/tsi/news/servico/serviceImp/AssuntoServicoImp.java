@@ -14,8 +14,12 @@ import java.util.List;
 public class AssuntoServicoImp implements AssuntoServico {
 
     @Autowired
-    private MongoAssuntoRepository assuntoRepository;
+    private MongoAssuntoRepository assuntoRepository; // replace by assuntoDAO
 
+    /*
+    * @Autowired
+    * private AssuntoDAO assuntoDAO; // replace by assuntoRepository
+    * */
     @Override
     public void cadastrar(Assunto assunto) {
         assuntoRepository.save(assunto);
