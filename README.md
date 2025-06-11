@@ -1,22 +1,5 @@
-Overview
+![image](https://github.com/user-attachments/assets/0a060335-bb77-4741-805d-42c0423f1c3d)
+![image](https://github.com/user-attachments/assets/b98c4a8c-f2ba-4067-b17e-da21145f19dd)
+![image](https://github.com/user-attachments/assets/40e42d33-9a5a-42be-b5c0-8bff099885a1)
+![image](https://github.com/user-attachments/assets/3d9cebb2-3920-4b5c-ac54-c47f6f832fd0)
 
-Uma agência digital de notícias precisa controlar as reportagens produzidas por seus jornalistas contratados. Dessa forma, deve-se desenvolver uma aplicação Web capaz de atender aos seguintes requisitos do sistema:
-1. Cadastro de jornalistas.
-
-    Todos os jornalistas devem ser cadastrados no sistema, incluindo informações básicas de identificação.
-    Deve ser possível obter a listagem dos jornalistas cadastrados.
-
-2. Cadastro de reportagens.
-
-    Jornalistas podem produzir suas reportagens no sistema.
-    Uma reportagem deve associar um ou mais assuntos no momento do cadastro.
-    Reportagens podem ter as seguintes situações:
-    “Em produção” – reportagens que estão em processo de desenvolvimento.
-    “Publicada” – reportagens que já foram publicadas.
-    “Cancelada” – reportagens canceladas.
-    Deve ser possível obter a listagem de reportagens através dos seguintes filtros:
-    Jornalista responsável.
-    Assunto.
-    Situação da reportagem.
-    Jornalistas podem cadastrar somente 2 reportagens de um determinadoassunto no mesmo dia.
-    Reportagens devem conter somente texto.
