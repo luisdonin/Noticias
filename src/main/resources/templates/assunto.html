@@ -2,46 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link th:href="@{/styles/form.css}" rel="stylesheet" />
+    <link th:href="@{/styles/lists.css}" rel="stylesheet" />
+    <link th:href="@{/styles/background.css}" rel="stylesheet" />
+    <link rel="icon" type="image/png" th:href="@{/styles/images/logo.png}">
+
+    <title>Cadastrar Assunto</title>
 </head>
 <body>
-<div id="logo-box">
+<!--<div id="logo-box">
     <div id="logo">
         <h1>Logo</h1>
     </div>
-</div>
+</div>-->
 
 <div id="nav-bar-box">
     <div id="nav-bar">
         <ul class="nav-bar-list">
+            <li class="nav-bar-list-item nav-bar-logo" style="background-color: white">
+                <a href="/"><img th:src="@{styles/images/logo.png}" alt="5pn Logo" id="logo-image"> </a>
+            </li>
 
             <li class="nav-bar-list-item" >
                 <a href="/" > Página Inicial </a></li>
 
-            <li class="nav-bar-list-item" >
-                <a href="reportagens" > Reportagens </a></li>
+           <!-- <li class="nav-bar-list-item" >
+                <a href="reportagens" > Reportagens </a></li> -->
 
-            <li class="nav-bar-list-item" >
-                <a href="jornalistas" > Jornalistas </a></li>
+            <!-- <li class="nav-bar-list-item" >
+                 <a href="jornalistas" > Jornalistas </a></li> -->
 
-            <li class="nav-bar-list-item" >
-                <a href="assuntos" > Assuntos </a></li>
+            <!-- <li class="nav-bar-list-item" >
+                 <a href="assuntos" > Assuntos </a></li> -->
 
-            <li class="nav-bar-list-item" >
-                <a href="jornalista"> Dashboard </a></li>
-
-        </ul>
-    </div>
-</div>
+             <li class="nav-bar-list-item" >
+                 <a href="reportagem"> Nova Reportagem </a></li>
 
 
-<form method="POST" action="assunto" th:object="${assunto}">
-    <input type="hidden" th:field="*{id}" />
-    <label>Titulo do Assunto: </label><br>
-    <input type="text" th:field="*{assuntoTitulo}" /><br>
-    <input type="submit" value="Salvar" />
-</form>
+            <!-- <li class="nav-bar-list-item" >
+                 <a href="assunto"> Novo Assunto </a></li> -->
+
+             <li class="nav-bar-list-item" >
+                 <a href="paineldecontrole"> Novo Jornalista </a></li>
+
+         </ul>
+     </div>
+ </div>
 
 
-</body>
-</html>
+ <form method="POST" action="assunto" th:object="${assunto}">
+     <input type="hidden" th:field="*{id}" />
+     <label>Titulo do Assunto: </label><br>
+     <input type="text" th:field="*{assuntoTitulo}" /><br>
+     <input type="submit" value="Salvar" />
+ </form>
+
+
+ </body>
+ </html>

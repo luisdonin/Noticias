@@ -1,0 +1,86 @@
+table {
+    width: 100%;
+    max-width: 50%;
+    margin: 32px auto;
+    border-collapse: separate;
+    background: transparent;
+    font-family: 'Arial', 'Verdana', sans-serif;
+    font-size: 1.15em;
+    letter-spacing: 0.02em;
+    padding: 10px;
+    border: none;
+
+}
+th, td {
+
+    padding: 18px 28px;
+    font-size: 1em;
+    color: #2d3250;
+    background: #f7e6b2;
+    text-align: left;
+    font-family: 'Arial', 'Verdana', sans-serif;
+    font-weight: 500;
+}
+
+
+th {
+    background: #b2e6e6;
+    color: #a05d99;
+    text-shadow: 1px 1px 0 #fff, 2px 2px 0 #c7a3c7;
+    font-weight: 700;
+    font-size: 1.08em;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 2px solid #c7a3c7;
+}
+
+tbody tr {
+    box-shadow: 0 2px 12px #c7a3c7;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+    background: #f7e6b2;
+}
+
+tr:nth-child(even) td {
+    background: #f9f9f9;
+}
+
+tr:hover td {
+    background: #b2e6e6;
+    color: #a05d99;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+td {
+    border-radius: 0 0 12px 12px;
+}
+
+.btn {
+    padding: 4px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    margin: 0 2px;
+    transition: background 0.2s;
+}
+
+.btn-edit {
+    background: #1976d2;
+}
+
+.btn-edit:hover {
+    background: #1565c0;
+}
+
+.btn-delete {
+    background: #c77dbb;
+}
+
+.btn-edit:hover {
+    background: #6b8f6b;
+}
+
+.btn-delete:hover {
+    background: #a05d99;
+}

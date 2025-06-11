@@ -38,10 +38,10 @@ public class controleAssunto {
     @PostMapping(value = "/assunto")
     public String cadastrarAssunto(Assunto assunto) {
         if (assunto.getId() == null || assunto.getId().isEmpty()) {
-            assunto.setId(null); // Ensure it's treated as new
+            assunto.setId(null);
         }
         assuntoServico.cadastrar(assunto);
-        return "redirect:/";
+        return "redirect:/assunto";
     }
 
     @GetMapping(value = "/assuntos")

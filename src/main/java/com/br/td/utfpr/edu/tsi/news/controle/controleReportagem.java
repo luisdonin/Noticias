@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.br.td.utfpr.edu.tsi.news.modelo.ReportagemSituacao;
 
 import java.util.List;
 
@@ -52,11 +53,14 @@ public class controleReportagem {
         model.addAttribute("reportagem", reportagem);
         model.addAttribute("jornalistas", jornalistaServico.listarTodos());
         model.addAttribute("assuntos", assuntoServico.listarTodos());
+        model.addAttribute("situacao", ReportagemSituacao.values());
         return "reportagem";
     }
 
+
+
     @PostMapping(value = "/reportagem")
-    public String cadastrarReportagem(Reportagem reportagem) {
+    public String cadastrarReportagem(Reportagem reportagem, Model model) {
         if (reportagem.getAutor() != null && reportagem.getAutor().getId() != null) {
             reportagem.setAutor(jornalistaServico.listarTodos()
                     .stream()
@@ -64,6 +68,24 @@ public class controleReportagem {
                     .findFirst()
                     .orElse(null));
         }
+
+        if (reportagem.getId() == null || reportagem.getId().isEmpty()) {
+            reportagem.setId(null);
+            reportagem.setDataCriacao(java.time.LocalDateTime.now());
+        }
+        /*June 10th, 2025*/
+        /*Here is where I enforced it, hopefully it works*/
+        if (!reportagemServico.canPostReportagem(
+                reportagem.getAutor().getId(),
+                reportagem.getAssunto().getId(),
+                reportagem.getDataCriacao().toLocalDate())) {
+            model.addAttribute("error", "Limite de 2 reportagens por assunto por dia .");
+            model.addAttribute("jornalistas", jornalistaServico.listarTodos());
+            model.addAttribute("assuntos", assuntoServico.listarTodos());
+            model.addAttribute("situacao", ReportagemSituacao.values());
+            return "reportagem";
+        }
+
         if (reportagem.getAssunto() != null && reportagem.getAssunto().getId() != null) {
             reportagem.setAssunto(assuntoServico.listarTodos()
                     .stream()
@@ -72,24 +94,34 @@ public class controleReportagem {
                     .orElse(null));
         }
 
-        if (reportagem.getId() == null || reportagem.getId().isEmpty()) {
-            reportagem.setId(null); // Ensure it's treated as new
-            reportagem.setDataCriacao(java.time.LocalDateTime.now());
-        }
         reportagemServico.cadastrar(reportagem);
-        return "redirect:/";
+        return "redirect:/reportagem";
     }
-    @GetMapping(value = "/reportagens")
+
+
+    @GetMapping("/reportagens")
     public String exibirPaginaListarReportagem(Model model) {
-        List<Reportagem> reportagem = reportagemServico.listarTodos();
-        model.addAttribute("reportagens", reportagem);
+        List<Reportagem> naoPublicadas = reportagemServico.listarTodos()
+                .stream()
+                .filter(r -> r.getSituacao() == ReportagemSituacao.pendente || r.getSituacao() == ReportagemSituacao.cancelada)
+                .toList();
+        model.addAttribute("reportagens", naoPublicadas);
         return "reportagens";
     }
 
     @GetMapping(value = "/removerReportagem")
     public String removerDocumentos(@RequestParam String idReportagem) {
         reportagemServico.remover(idReportagem);
-        return "index";
+        return "redirect:/reportagens";
+    }
+    @GetMapping("/reportagensPublic")
+    public String exibirPaginaListarReportagemPublic(Model model) {
+        List<Reportagem> publicadas = reportagemServico.listarTodos()
+                .stream()
+                .filter(r -> r.getSituacao() == ReportagemSituacao.publicada)
+                .toList();
+        model.addAttribute("reportagens", publicadas);
+        return "reportagensPublic";
     }
 
 }
