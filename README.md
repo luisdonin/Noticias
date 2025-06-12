@@ -1,5 +1,5 @@
 ## Video
-![Link do Video](https://www.youtube.com/watch?v=Kx1b6gY9k4E)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Kx1b6gY9k4E/0.jpg)](https://www.youtube.com/watch?v=Kx1b6gY9k4E)
 
 
 ## Model
