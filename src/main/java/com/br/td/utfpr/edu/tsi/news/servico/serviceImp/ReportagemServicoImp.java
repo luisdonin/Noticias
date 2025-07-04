@@ -16,9 +16,8 @@ public class ReportagemServicoImp implements ReportagemServico {
     private MongoReportagemRepository reportagemRepository;
 
     @Override
-    public void cadastrar(Reportagem reportagem) {
-
-        reportagemRepository.save(reportagem);
+    public Reportagem cadastrar(Reportagem reportagem) {
+        return reportagemRepository.save(reportagem);
     }
 
     @Override

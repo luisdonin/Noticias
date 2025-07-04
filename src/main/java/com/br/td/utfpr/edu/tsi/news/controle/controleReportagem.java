@@ -5,6 +5,7 @@ import com.br.td.utfpr.edu.tsi.news.modelo.Assunto;
 import com.br.td.utfpr.edu.tsi.news.modelo.Jornalista;
 import com.br.td.utfpr.edu.tsi.news.modelo.Reportagem;
 import com.br.td.utfpr.edu.tsi.news.servico.AssuntoServico;
+import com.br.td.utfpr.edu.tsi.news.servico.Indexador;
 import com.br.td.utfpr.edu.tsi.news.servico.JornalistaServico;
 import com.br.td.utfpr.edu.tsi.news.servico.ReportagemServico;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class controleReportagem {
 
     @Autowired
     private AssuntoServico assuntoServico;
+
+    @Autowired
+    private Indexador indexador;
 
     @GetMapping("/reportagem")
     public String exibirPaginaCadastrarReportagem(@RequestParam(required = false) String idReportagem, Model model) {
@@ -73,13 +77,12 @@ public class controleReportagem {
             reportagem.setId(null);
             reportagem.setDataCriacao(java.time.LocalDateTime.now());
         }
-        /*June 10th, 2025*/
-        /*Here is where I enforced it, hopefully it works*/
+
         if (!reportagemServico.canPostReportagem(
                 reportagem.getAutor().getId(),
                 reportagem.getAssunto().getId(),
                 reportagem.getDataCriacao().toLocalDate())) {
-            model.addAttribute("error", "Limite de 2 reportagens por assunto por dia .");
+            model.addAttribute("error", "Limite de 2 reportagens por assunto por dia.");
             model.addAttribute("jornalistas", jornalistaServico.listarTodos());
             model.addAttribute("assuntos", assuntoServico.listarTodos());
             model.addAttribute("situacao", ReportagemSituacao.values());
@@ -94,7 +97,9 @@ public class controleReportagem {
                     .orElse(null));
         }
 
-        reportagemServico.cadastrar(reportagem);
+        // Save and get the saved entity with id
+        Reportagem savedReportagem = reportagemServico.cadastrar(reportagem);
+        indexador.indexar(savedReportagem);
         return "redirect:/reportagem";
     }
 
@@ -122,6 +127,20 @@ public class controleReportagem {
                 .toList();
         model.addAttribute("reportagens", publicadas);
         return "reportagensPublic";
+    }
+
+    @GetMapping("/buscaIndexada")
+    public String buscaIndexada(@RequestParam String termo, Model model, @RequestParam(required = false) Boolean publico) {
+        List<String> ids = indexador.procurar("reportConteudo", termo);
+        List<Reportagem> resultados = reportagemServico.listarTodos()
+                .stream()
+                .filter(r -> ids.contains(r.getId()))
+                .toList();
+        model.addAttribute("reportagens", resultados);
+        if (publico != null && publico) {
+            return "reportagensPublic";
+        }
+        return "reportagens";
     }
 
 }

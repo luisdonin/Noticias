@@ -6,11 +6,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface ReportagemServico {
-    public  void cadastrar(Reportagem Reportagem);
+    Reportagem cadastrar(Reportagem reportagem);
     List<Reportagem> listarTodos();
-    public void remover(String idReportagem);
-
+    void remover(String idReportagem);
     boolean canPostReportagem(String id, String id1, LocalDate localDate);
 }
-
-
